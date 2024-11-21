@@ -72,6 +72,10 @@ public:
     int getNumarLocuriLibere() const {
         return capacitate - nrPersoaneImbarcate;
     }
+
+    operator int() const {
+        return nrPersoaneImbarcate;
+    }
 };
 
 int Autobuz::nrAutobuze = 0;
@@ -99,6 +103,9 @@ int main()
 
     cout << "Testare metoda getNumarLocuriLibere()" << endl;
     cout << "a1.getNumarLocuriLibere(): " << a1.getNumarLocuriLibere() << endl;
+
+    cout << endl <<"Testare operatorul de cast la int" << endl;
+    cout << "Numarul de persoane urcate deja in autobuz (a1): " << int(a1) << endl;
 
     
     return 0;
