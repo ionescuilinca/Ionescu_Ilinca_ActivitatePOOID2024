@@ -68,6 +68,10 @@ public:
             << endl;
         return out;
     }
+
+    int getNumarLocuriLibere() const {
+        return capacitate - nrPersoaneImbarcate;
+    }
 };
 
 int Autobuz::nrAutobuze = 0;
@@ -93,6 +97,9 @@ int main()
     a1 = a2;
     cout << a1 << endl;
 
+    cout << "Testare metoda getNumarLocuriLibere()" << endl;
+    cout << "a1.getNumarLocuriLibere(): " << a1.getNumarLocuriLibere() << endl;
 
+    
     return 0;
 }
