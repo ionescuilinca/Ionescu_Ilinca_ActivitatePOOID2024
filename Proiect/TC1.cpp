@@ -76,6 +76,26 @@ public:
     operator int() const {
         return nrPersoaneImbarcate;
     }
+
+    int getCapacitate() const {
+        return capacitate;
+    }
+
+    void setCapacitate(int capacitate) {
+        if (capacitate >= 0 && capacitate > nrPersoaneImbarcate) {
+            this->capacitate = capacitate;
+        }
+    }
+
+    const char* getProducator() const {
+        return producator;
+    }
+
+    void setProducator(const char* producator) {
+        delete[] this->producator;
+        copy_str(&this->producator, producator);
+    }
+
 };
 
 int Autobuz::nrAutobuze = 0;
@@ -106,7 +126,15 @@ int main()
 
     cout << endl <<"Testare operatorul de cast la int" << endl;
     cout << "Numarul de persoane urcate deja in autobuz (a1): " << int(a1) << endl;
-
     
+    cout << endl << "Testare metode accesor(get si set) pentru \"capacitate\"" << endl;
+    a1.setCapacitate(50);
+    cout << "Capacitatea autobuzului (a1): " << a1.getCapacitate() << endl;
+
+    cout << endl << "Testare metode accesor(get si set) pentru \"producator\"" << endl;
+    a1.setProducator("Volvo");
+    cout << "Producatorul autobuzului (a1): " << a1.getProducator() << endl;
+
+
     return 0;
 }
