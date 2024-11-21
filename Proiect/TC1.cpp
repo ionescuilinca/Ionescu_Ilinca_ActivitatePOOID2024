@@ -96,6 +96,9 @@ public:
         copy_str(&this->producator, producator);
     }
 
+    bool operator>(const Autobuz& a) const {
+        return capacitate > a.capacitate;
+    }
 };
 
 int Autobuz::nrAutobuze = 0;
@@ -135,6 +138,8 @@ int main()
     a1.setProducator("Volvo");
     cout << "Producatorul autobuzului (a1): " << a1.getProducator() << endl;
 
+    cout << endl << "Testare operator>" << endl;
+    cout << "a1>a2 ? : " << (a1 > a2 ? "Da" : "Nu") << endl;
 
     return 0;
 }
