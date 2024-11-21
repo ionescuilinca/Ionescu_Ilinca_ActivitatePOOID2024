@@ -3,11 +3,17 @@
 #include <iostream>
 using namespace std;
 
-
 void copy_str(char** dest,const char* sursa)
 {
-    *dest= new char[strlen(sursa) + 1];
-    strcpy(*dest, "");
+    if (sursa)
+    {
+        *dest= new char[strlen(sursa) + 1];
+        strcpy(*dest, "");
+    }
+    else
+    {
+        *dest = NULL;
+    }
 }
 
 class Autobuz
@@ -15,16 +21,16 @@ class Autobuz
     static int nrAutobuze;
     const int idAutobuz; 
     int capacitate;
-    int nrPersoaneImbarcate
+    int nrPersoaneImbarcate;
     char* producator;
 
 public:
 
-    Autobuz():idAutobuz = nrAutobuze+1
+    Autobuz():idAutobuz(++nrAutobuze)
     {
         this->capacitate = 0;
         this->nrPersoaneImbarcate = 0;
-        strcpy(this->producator, "");
+        copy_str(&this->producator, "");
     }
 };
 
