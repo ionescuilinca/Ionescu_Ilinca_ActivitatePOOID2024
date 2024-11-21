@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 
+
 void copy_str(char** dest,const char* sursa)
 {
     *dest= new char[strlen(sursa) + 1];
