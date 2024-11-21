@@ -43,6 +43,22 @@ public:
     ~Autobuz() {
         delete[] producator;
     }    
+
+    Autobuz(const Autobuz& a) : idAutobuz(++nrAutobuze) {
+        capacitate = a.capacitate;
+        nrPersoaneImbarcate = a.nrPersoaneImbarcate;
+        copy_str(&producator, a.producator);
+    }
+
+    Autobuz& operator=(const Autobuz& a) {
+        if (this != &a) {
+            capacitate = a.capacitate;
+            nrPersoaneImbarcate = a.nrPersoaneImbarcate;
+            delete[] producator;
+            copy_str(&producator, a.producator);
+        }
+        return *this;
+    }
 };
 
 int Autobuz::nrAutobuze = 0;
