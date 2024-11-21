@@ -8,7 +8,7 @@ void copy_str(char** dest,const char* sursa)
     if (sursa)
     {
         *dest= new char[strlen(sursa) + 1];
-        strcpy(*dest, "");
+        strcpy(*dest, sursa);
     }
     else
     {
@@ -59,13 +59,40 @@ public:
         }
         return *this;
     }
+
+    friend ostream& operator<<(ostream& out, const Autobuz& a) {
+        out << "ID: " << a.idAutobuz
+            << "; Capacitate: " << a.capacitate
+            << "; Persoane imbarcate: " << a.nrPersoaneImbarcate
+            << "; Producator: " << (a.producator ? a.producator : "")
+            << endl;
+        return out;
+    }
 };
 
 int Autobuz::nrAutobuze = 0;
 
 int main()
 {
-    cout << "TC1!\n";
+    cout << "TC1\n" << endl;
+
+    
+    cout << "Testare constructor fara parametri" << endl;
+    Autobuz a1;
+    cout << a1 << endl;
+
+    cout << "Testare constructor cu parametri" << endl;
+    Autobuz a2(44, 26, "Mercedes");
+    cout << a2 << endl;
+
+    cout << "Testare constructor de copiere" << endl;
+    Autobuz a3 = a2;
+    cout << a3 << endl;
+    
+    cout << "Testare operatorul = (de atribuire)" << endl;
+    a1 = a2;
+    cout << a1 << endl;
 
 
+    return 0;
 }
