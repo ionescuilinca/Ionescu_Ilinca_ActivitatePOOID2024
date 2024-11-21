@@ -32,6 +32,17 @@ public:
         this->nrPersoaneImbarcate = 0;
         copy_str(&this->producator, "");
     }
+
+    Autobuz(int capacitate, int nrPersoaneImbarcate, const char* producator): idAutobuz(++nrAutobuze) {
+        this->capacitate = (capacitate > 0) ? capacitate : 0;
+        this->nrPersoaneImbarcate = (nrPersoaneImbarcate >= 0 && nrPersoaneImbarcate <= capacitate)
+            ? nrPersoaneImbarcate : 0;
+        copy_str(&this->producator, producator);
+    }
+
+    ~Autobuz() {
+        delete[] producator;
+    }    
 };
 
 int Autobuz::nrAutobuze = 0;
